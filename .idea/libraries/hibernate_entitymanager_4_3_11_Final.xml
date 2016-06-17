@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hibernate-entitymanager-4.3.11.Final">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/hibernate/hibernate-entitymanager-4.3.11.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
