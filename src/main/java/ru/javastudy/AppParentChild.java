@@ -6,6 +6,7 @@ import ru.javastudy.entity.Parent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -39,8 +40,29 @@ public class AppParentChild {
             System.out.println(children.get(i).getCaption());
         }
 
+        getItemById(entityManager);
+        getByParent(entityManager);
+
 
         entityManager.close();
         entityManagerFactory.close();
     }
+
+    public static void getItemById(EntityManager em){
+        Query query = em.createQuery("select child from Child child where child.id = :id");
+        query.setParameter("id", 1);
+        Child child = (Child)query.getSingleResult();
+        System.out.println(">> " + child.getCaption());
+    }
+
+    public static void getByParent(EntityManager em){
+        Query query = em.createQuery("select child from Child child where child.parent.id = :id");
+        query.setParameter("id", 1);
+        List<Child> children = query.getResultList();
+        for (Child child:
+             children) {
+            System.out.println(">> " + child.getCaption());
+        }
+            
+        }
 }
